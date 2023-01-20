@@ -22,6 +22,18 @@ body {
   }
 }
 
+.btn-pry {
+  @apply rounded w-full text-white bg-gray-700 py-2 shadow outline-none hover:bg-gray-800 active:bg-gray-900;
+}
+.google-btn {
+  @apply rounded border border-gray-700 w-full text-gray-700  py-1 shadow outline-none;
+}
+
+select,
+textarea {
+  @apply rounded border p-2 outline-none  ring-blue-300 focus:ring-2;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -29,6 +41,25 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.track {
+  position: absolute;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee 15s linear infinite;
+  width: 180%;
+}
+.track:hover {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-40%);
+  }
 }
 
 @media (prefers-color-scheme: dark) {

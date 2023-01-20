@@ -1,17 +1,18 @@
 import BestSeller from '../components/BestSeller';
 import Categories from '../components/Categories';
 import HeroBanner from '../components/HeroBanner';
-import Layout from '../components/Layout';
+import Policy from '../components/Policy';
 
 import { client } from '../lib/client';
 
 export default function Home({ heroBanner, products }) {
   return (
-    <Layout>
+    <>
       <HeroBanner heroBanner={heroBanner} />
+      <Policy />
       <Categories products={products} />
-      <BestSeller />
-    </Layout>
+      <BestSeller products={products} />
+    </>
   );
 }
 

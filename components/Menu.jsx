@@ -3,7 +3,7 @@ import React from 'react';
 function Menu() {
   return (
     <div>
-      <div className="flex">
+      <div className="hidden lg:flex">
         <ul className="flex space-x-12 text-xl capitalize">
           <li>home</li>
           <li>about</li>
