@@ -24,25 +24,42 @@ async function getCar(query) {
   });
 }
 
+function useDebounce(value, delay) {
+  const [debounceValue, setDebounceValue] = useState(value);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setDebounceValue(value);
+    }, delay);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [value, delay]);
+
+  return debounceValue;
+}
+
 function Search() {
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
+  const debounceValue = useDebounce(query, 500);
 
   useEffect(() => {
     (async () => {
       setSuggestions([]);
-      if (query.length > 0) {
-        const data = await getCar(query);
+      if (debounceValue.length > 0) {
+        const data = await getCar(debounceValue);
         setSuggestions(data);
       }
     })();
-  }, [query]);
+  }, [debounceValue]);
 
   return (
     <div className="relative">
       <div>
         <input
-          type="search"
+          type="input"
           id="search"
           value={query}
           placeholder="Search..."
