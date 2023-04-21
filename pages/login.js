@@ -22,7 +22,7 @@ function LoginPage() {
   };
 
   return (
-    <div>
+    <div className="shadow-md px-8 py-4">
       <form
         className="max-auto max-w-screen-md"
         onSubmit={handleSubmit(onSubmit)}

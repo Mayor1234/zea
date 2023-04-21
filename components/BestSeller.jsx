@@ -10,8 +10,8 @@ function BestSeller({ products }) {
           <span className="heading-3"></span>
         </div>
 
-        <div className="relative mx-4 h-80 overflow-x-hidden ">
-          <div className=" w-full flex justify-center gap-4 track lg:">
+        <div className="h-40 relative mx-4 lg:h-80 overflow-x-hidden ">
+          <div className="w-full flex justify-center gap-4 track">
             {products.map((item) => (
               <Products key={item._id} product={item} />
             ))}

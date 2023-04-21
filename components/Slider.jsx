@@ -20,7 +20,7 @@ function Slider({ slides }) {
     const next = (current + 1) % slides.length;
     const timeout = setTimeout(() => {
       setCurrent(next);
-    }, 2500);
+    }, 4000);
 
     return () => {
       clearTimeout(timeout);
@@ -28,24 +28,32 @@ function Slider({ slides }) {
   }, [current, slides.length]);
 
   return (
-    <div className="w-full relative">
+    <div className="w-full h-1/2 relative">
       <div className="relative">
         <img
-          src={urlFor(slides[current])}
+          src={urlFor(slides[current].imageUrl)}
           alt="hero banner"
-          className="w-full h-full "
+          className="w-full h-1/2 "
         />
+        <div className="absolute top-40 flex flex-col w-full justify-center items-center">
+          <h1 className="tracking-tight text-slate-200 text-5xl capitalize">
+            {slides[current].title}
+          </h1>
+          <button className="hero-btn capitalize">
+            {slides[current].button}
+          </button>
+        </div>
       </div>
       <div className="top-1/2 inset-x-8 flex justify-between absolute text-red-200 text-2xl cursor-pointer ">
         <div
           onClick={prev}
-          className="px-4 text-3xl py-1 rounded-full  hover:bg-gray-800 hover:text-white"
+          className="px-4 text-3xl py-1  hover:bg-gray-800 hover:text-white"
         >
           &#10092;
         </div>
         <div
           onClick={next}
-          className="px-4 text-3xl py-1 rounded-full  hover:bg-gray-800 hover:text-white"
+          className="px-4 text-3xl py-1 hover:bg-gray-800 hover:text-white"
         >
           &#10093;
         </div>

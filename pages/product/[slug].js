@@ -14,7 +14,7 @@ const ProductDetail = ({ product }) => {
         <span className="heading-3"></span>
       </div>
       <div className="grid grid-cols-1 w-full lg:grid-cols-12 gap-12 lg:w-4/5 ">
-        <div className=" mx-4 lg:col-span-8 col-span-1 ">
+        <div className="mx-4 lg:col-span-8 col-span-1 ">
           <div className="mb-2">
             <img
               src={urlFor(image && image[index])}
@@ -24,7 +24,7 @@ const ProductDetail = ({ product }) => {
           </div>
           <div>
             {
-              <div className="flex w-40 gap-2 cursor-pointer">
+              <div className="flex w-36 gap-2 cursor-pointer">
                 {image?.map((item, index) => (
                   <img
                     src={urlFor(item)}
@@ -71,7 +71,7 @@ const ProductDetail = ({ product }) => {
                 </span>
               </div>
             </div>
-            <div className=" flex gap-4 mb-4">
+            <div className=" flex gap-4 mb-8">
               <div>
                 <button
                   type="button"
@@ -89,6 +89,13 @@ const ProductDetail = ({ product }) => {
                   Buy Now
                 </button>
               </div>
+            </div>
+            <div className="w-full">
+              <span className="text-2xl text-gray-500 mb-8">Description</span>
+              <p className="mt-3 text-gray-700">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Commodi in dolorem eaque? Alias sequi consequatur, ipsum
+              </p>
             </div>
           </div>
         </div>

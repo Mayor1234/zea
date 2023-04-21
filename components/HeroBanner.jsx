@@ -1,13 +1,11 @@
 // import Image from 'next/image';
 import React from 'react';
-
 import Slider from './Slider';
 
-const HeroBanner = ({ heroBanner }) => {
-  const { image } = heroBanner;
+const HeroBanner = ({ banners }) => {
   return (
     <div className=" w-full h-1/4 relative lg:w-full">
-      <Slider slides={image} />
+      <Slider slides={banners} />
     </div>
   );
 };

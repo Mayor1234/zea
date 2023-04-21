@@ -1,14 +1,16 @@
+import axios from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 import React from 'react';
 import { useAppContext } from '../context/AppContext';
 import { urlFor } from '../lib/client';
+import getStripe from '../lib/getStripe';
 import cartIcon from '../public/cart.png';
 import deleteIcon from '../public/deleteicon.png';
 
 function CartDropDown() {
-  const router = useRouter();
+  // const router = useRouter();
   const {
     cartItems,
     toggleCart,
@@ -19,15 +21,37 @@ function CartDropDown() {
     removeCartProduct,
   } = useAppContext();
 
-  const checkout = () => {
-    router.push('login?redirect=/payment');
-    setHidden(true);
+  const handleCheckout = async () => {
+    const stripe = await getStripe();
+
+    const response = await fetch('/api/stripe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        amount: 1000,
+        payment_method: 'card',
+      }),
+    });
+
+    if (response.statusCode === 500) return;
+    const data = await response.json();
+    stripe.redirectToCheckout({ sessionId: data.id });
+
+    // const response = await axios.post('/api/stripe', {
+    //   data: { cartItems },
+    // });
+
+    // if (response.data === 500) return;
+    // const data = response.data;
+    // stripe.redirectToCheckout({ sessionId: data.id });
+
+    await setHidden(true);
   };
 
   return (
     <div>
-      <div className="right-4 lg:w-64 lg:right-16 h-auto absolute bg-white border top-16 mt-1 z-10 rounded-b shadow-md">
-        <div className="h-auto flex mb-2 flex-col bg-white mx-2">
+      <div className="right-0 lg:w-80  absolute bg-white border top-16 h-screen z-10 rounded-b shadow-md">
+        <div className="h-auto flex mb-2 flex-col bg-white mx-4">
           {cartItems.length < 1 ? (
             <div className="h-full mt-10 flex flex-col justify-center items-center">
               <div className="flex flex-col justify-center items-center">
@@ -111,7 +135,7 @@ function CartDropDown() {
                 </div>
                 <button
                   className="w-full mt-auto mx-auto px-8 py-2 outline-none border-0 bg-gray-700 text-white rounded"
-                  onClick={checkout}
+                  onClick={handleCheckout}
                 >
                   Checkout
                 </button>

@@ -3,7 +3,6 @@ import fastDelivery from '../public/fast-delivery.png';
 import savings from '../public/saving.png';
 import payment from '../public/payment.png';
 import insurance from '../public/insurance.png';
-import support from '../public/help-center.png';
 import PolicyCard from './PolicyCard';
 
 const policies = [
@@ -14,18 +13,13 @@ const policies = [
   },
   {
     image: savings,
-    title: 'money saving',
+    title: 'product discount',
     content: 'affordadable prices',
   },
   {
     image: payment,
     title: 'payment method',
     content: 'secure sytems',
-  },
-  {
-    image: support,
-    title: 'online support',
-    content: '24 hours ',
   },
   {
     image: insurance,

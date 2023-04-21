@@ -4,8 +4,8 @@ import React from 'react';
 function PolicyCard({ policy }) {
   const { image, title, content } = policy;
   return (
-    <div className=" container py-12">
-      <div className="flex justify-center px-12 gap-4 md:flex-none lg:border-r ">
+    <div className=" container py-12 px-8">
+      <div className="flex justify-center px-12 gap-4 md:flex-none">
         <Image
           src={image}
           alt="policy icon"

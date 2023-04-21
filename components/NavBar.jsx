@@ -7,7 +7,7 @@ import Search from './Search';
 
 function NavBar() {
   return (
-    <>
+    <div className="">
       <nav className=" h-16 top-0 flex items-center shadow-md text-gray-700 relative">
         <div className="container mx-auto flex justify-between items-center ">
           <Logo />
@@ -19,7 +19,7 @@ function NavBar() {
           </div>
         </div>
       </nav>
-    </>
+    </div>
   );
 }
 

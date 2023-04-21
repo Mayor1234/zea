@@ -6,15 +6,19 @@ export default {
     {
       name: 'image',
       title: 'Image',
-      type: 'array',
-      of: [{ type: 'image' }],
+      type: 'image',
       options: {
         hotspot: true,
       },
     },
     {
-      name: 'btnText',
-      title: 'Button Text',
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+    },
+    {
+      name: 'button',
+      title: 'Button',
       type: 'string',
     },
   ],
