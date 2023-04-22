@@ -1,4 +1,3 @@
-import axios from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
 // import { useRouter } from 'next/router';
@@ -15,7 +14,7 @@ function CartDropDown() {
     cartItems,
     toggleCart,
     totalPrice,
-    setHidden,
+    // setHidden,
     totalQuantity,
     changeCartQutantity,
     removeCartProduct,
@@ -27,26 +26,27 @@ function CartDropDown() {
     const response = await fetch('/api/stripe', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        amount: 1000,
-        payment_method: 'card',
-      }),
+      body: JSON.stringify({ cartItems }),
     });
 
     if (response.statusCode === 500) return;
     const data = await response.json();
-    stripe.redirectToCheckout({ sessionId: data.id });
 
-    // const response = await axios.post('/api/stripe', {
-    //   data: { cartItems },
-    // });
-
-    // if (response.data === 500) return;
-    // const data = response.data;
-    // stripe.redirectToCheckout({ sessionId: data.id });
-
-    await setHidden(true);
+    await stripe.redirectToCheckout({ sessionId: data.id });
+    // return data.sessionId;
   };
+
+  // const redirectToCheckout = async () => {
+  //   const sessionId = await handleCheckout();
+  //   // const stripe = await getStripe();
+  //   const result = await stripe.redirectToCheckout({
+  //     sessionId: sessionId,
+  //   });
+  //   if (result.error) {
+  //     console.log(result.error.message);
+  //   }
+  // };
+  // redirectToCheckout();
 
   return (
     <div>
