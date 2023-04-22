@@ -32,21 +32,8 @@ function CartDropDown() {
     if (response.statusCode === 500) return;
     const data = await response.json();
 
-    await stripe.redirectToCheckout({ sessionId: data.id });
-    // return data.sessionId;
+    stripe.redirectToCheckout({ sessionId: data.id });
   };
-
-  // const redirectToCheckout = async () => {
-  //   const sessionId = await handleCheckout();
-  //   // const stripe = await getStripe();
-  //   const result = await stripe.redirectToCheckout({
-  //     sessionId: sessionId,
-  //   });
-  //   if (result.error) {
-  //     console.log(result.error.message);
-  //   }
-  // };
-  // redirectToCheckout();
 
   return (
     <div>
